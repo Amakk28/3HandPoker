@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane fx:id="gameScreen" styleClass="background-game" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameController">
+    <top>
+        <VBox>
+        <MenuBar styleClass="menu-bar">
+            <Menu text="Options">
+                <MenuItem text="Fresh Start" fx:id="freshStart" onAction="#onFreshStart"/>
+                <MenuItem text="New Look" fx:id="newLook" onAction="#onNewLook"/>
+                <MenuItem text="Exit" fx:id="exitGame" onAction="#onExit"/>
+            </Menu>
+        </MenuBar>
+<!--           DEALER'S CARDS-->
+        <HBox alignment="CENTER" spacing="20">
+            <padding>
+                <Insets top="10" />
+            </padding>
+            <Label fx:id="dCard1" text=" " styleClass="label-style" />
+            <Label fx:id="dCard2" text=" " styleClass="label-style" />
+            <Label fx:id="dCard3" text=" " styleClass="label-style" />
+        </HBox>
+        </VBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER">
+            <HBox alignment = "CENTER">
+                <Button fx:id = "startButton" styleClass="button-style2" text = "Start" onAction="#setStartButton"/>
+            </HBox>
+            <Region prefHeight="200"/>
+
+                <!--    INACTIVE PLAYER's CARDS        -->
+            <HBox alignment="CENTER" spacing="20">
+                <Label fx:id="p2Card1" text="Card 1" styleClass="label-style" />
+                <Label fx:id="p2Card2" text="Card 2" styleClass="label-style" />
+                <Label fx:id="p2Card3" text="Card 3" styleClass="label-style" />
+            </HBox>
+            <Label fx:id="player2Label" styleClass="label-style" text="UPDATE THIS LABEL(player not in focus)" wrapText="true" />
+        </VBox>
+    </center>
+    <bottom>
+        <!--        SHOW ACTIVE PLAYER'S CARDS-->
+        <VBox alignment="CENTER">
+            <VBox alignment="CENTER">
+                <Region prefHeight="100"/>
+
+                <padding>
+                    <Insets top="10" bottom="10" />
+                </padding>
+                <HBox alignment="CENTER" spacing="20">
+                    <Button fx:id="foldButton" styleClass="button-style2" text="Fold" onAction="#setFoldButton"/>
+                    <Region prefWidth="20"/>
+                    <Label fx:id="p1Card1" text="Card 1" styleClass="in-focus-label" prefWidth="50" />
+                    <Label fx:id="p1Card2" text="Card 2" styleClass="in-focus-label" prefWidth="50"/>
+                    <Label fx:id="p1Card3" text="Card 3" styleClass="in-focus-label" prefWidth="50"/>
+                    <Region prefWidth="20"/>
+                    <Button fx:id="dealButton" styleClass="button-style2" text="Deal" onAction="#setDealButton"/>
+                </HBox>
+            </VBox>
+                <padding>
+                    <Insets bottom="100" /> <!-- tried to create padding for Player 1 text bc its off screen, but it doesn't work-->
+                </padding>
+            <HBox alignment="CENTER">
+                <Label fx:id="playerLabel" styleClass="label-style" text="Player 1" wrapText="true" />
+            </HBox>
+            <Region prefHeight="10"/>
+            <Button fx:id="continueButton" styleClass="button-style2" text="Continue" alignment="CENTER" onAction="#setContinueButton"/>
+        </VBox>
+    </bottom>
+    <left>
+        <VBox alignment="CENTER">
+            <padding>
+                <Insets left="10" top="190" />
+            </padding>
+            <Label styleClass="label-style" text="Player 2" wrapText="true" />
+            <HBox><!-- THE STATS ASSET PLAYER 2-->
+                <GridPane styleClass="grid-pane">
+                    <Label styleClass="stat-label" text="  Total Wins:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <Label fx:id="totalWins2" alignment="BASELINE_RIGHT" prefWidth="90" styleClass="stat-label" text="0" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Label styleClass="stat-label" text="  Ante:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <Label fx:id="anteValue2" alignment="BASELINE_RIGHT" prefWidth="90" styleClass="stat-label" text="0" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <Label styleClass="stat-label" text="  Pair Plus:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <Label fx:id="pairPlusValue2" alignment="BASELINE_RIGHT" prefWidth="90" styleClass="stat-label" text="0" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <Label styleClass="stat-label" text="  Wager:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <Label fx:id="wagerValue2" alignment="BASELINE_RIGHT" prefWidth="90" styleClass="stat-label" text="0" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                </GridPane>
+            </HBox>
+
+        </VBox>
+    </left>
+
+
+    <right>
+        <VBox alignment="CENTER">
+<!--            <padding>-->
+<!--                <Insets right="10" top="10" />-->
+<!--            </padding>-->
+            <HBox>
+<!--                create padding on the left side of the vbox-->
+                <VBox> <!-- THE LOG ASSET -->
+                    <Label styleClass="label-style" text="Log" wrapText="true" />
+                    <TextArea fx:id="log" maxHeight="300" maxWidth="200" styleClass="text-area" wrapText="true" />
+<!--                    <padding>-->
+<!--                            <Insets bottom="10" top="10" />-->
+<!--                    </padding>-->
+                </VBox>
+                <Region prefWidth="10"/>
+<!--                <padding>-->
+<!--                    <Insets bottom="30" left="30" />-->
+<!--                </padding>-->
+            </HBox>
+            <Region prefHeight="40"/>
+
+            <Label styleClass="label-style" text="Player 1" wrapText="true" />
+
+            <HBox alignment="CENTER_RIGHT"><!-- THE STATS ASSET PLAYER 2-->
+                <GridPane styleClass="grid-pane" >
+                    <Label styleClass="stat-label" text="  Total Wins:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <Label fx:id="totalWins" alignment="BASELINE_RIGHT" prefWidth="90" styleClass="stat-label" text="0" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                    <Label styleClass="stat-label" text="  Ante:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <Label fx:id="anteValue" alignment="BASELINE_RIGHT" prefWidth="90" styleClass="stat-label" text="0" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <Label styleClass="stat-label" text="  Pair Plus:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <Label fx:id="pairPlusValue" alignment="BASELINE_RIGHT" prefWidth="90" styleClass="stat-label" text="0" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <Label styleClass="stat-label" text="  Wager:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <Label fx:id="wagerValue" alignment="BASELINE_RIGHT" prefWidth="90" styleClass="stat-label" text="0" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                </GridPane>
+                <Region prefWidth="10"/>
+            </HBox>
+        </VBox>
+    </right>
+
+
+</BorderPane>

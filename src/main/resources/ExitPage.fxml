@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="ExitController" fx:id="mainMenu" stylesheets="@Styles.css" styleClass="background" alignment="CENTER" spacing="20" style="-fx-background-color: rgba(0, 0, 0, 0.9);">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Are you sure you want to exit?"
+           style="-fx-text-fill: white;">
+        <font>
+            <Font size="24"/>
+        </font>
+    </Label>
+        <!--    BACK AND EXIT BUTTON -->
+    <HBox alignment="CENTER" spacing="50">
+        <Button fx:id="cancelButton"
+                text="Back"
+                styleClass="button-style"/>
+
+        <Button fx:id="exitButton"
+                text="Exit"
+                styleClass="button-style" onAction="#setExitOption"/>
+    </HBox>
+</VBox>
